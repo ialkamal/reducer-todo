@@ -5,7 +5,7 @@ function Todos(props) {
   return (
     <div>
       {props.todos.map((todo) => {
-        return <Todo key={todo.id} todo={todo} setTodos={props.setTodos} />;
+        return <Todo key={todo.id} todo={todo} completeItem={props.completeItem} />;
       })}
     </div>
   );

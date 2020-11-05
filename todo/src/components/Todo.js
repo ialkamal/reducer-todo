@@ -7,7 +7,7 @@ function Todo(props) {
         style={{
           textDecoration: props.todo.completed ? "line-through" : "none",
         }}
-        onClick=""
+        onClick={() => props.completeItem(props.todo.id)}
       >
         {JSON.stringify(props.todo, null, 2)}
       </pre>
