@@ -23,6 +23,7 @@ function App() {
         item: item,
         completed: false,
         id: Date.now(),
+        completed_date: null,
       },
     });
     setItem("");

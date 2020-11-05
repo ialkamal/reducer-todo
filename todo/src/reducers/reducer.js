@@ -2,13 +2,15 @@ export const initialState = {
   todos: [
     {
       item: "Learn about reducers",
-      completed: true,
+      completed: false,
       id: 3892987589,
+      completed_date: null,
     },
     {
       item: "Learn about redux",
       completed: false,
       id: 3892955589,
+      completed_date: null,
     },
   ],
 };
@@ -24,6 +26,7 @@ export function reducer(state, action) {
             item: el.item,
             completed: !el.completed,
             id: el.id,
+            completed_date: el.completed ? null : Date.now(),
           };
         return el;
       });
