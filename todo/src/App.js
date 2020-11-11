@@ -1,9 +1,11 @@
 import { useState, useReducer } from "react";
 import Todos from "./components/Todos";
+import { Button, Form, Container, Card, Col } from "react-bootstrap";
 
 import { reducer, initialState } from "./reducers/reducer";
 
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -46,17 +48,41 @@ function App() {
   return (
     <div className="App">
       <h1>Todo App!</h1>
-      <Todos key={state.id} todos={state.todos} completeItem={completeItem} />
-      <form onSubmit={addItem}>
-        <input
-          name="item"
-          placeholder="Enter todo..."
-          value={item}
-          onChange={handleChange}
-        />
-        <button>Add</button>
-        <button onClick={clearItems}>Clear</button>
-      </form>
+      <Container>
+        <Card
+          style={{ width: "600px", margin: "20px auto", background: "#FFE" }}
+        >
+          <Todos
+            key={state.id}
+            todos={state.todos}
+            completeItem={completeItem}
+          />
+          <Form
+            style={{ margin: "25px auto", width: "90%" }}
+            onSubmit={addItem}
+          >
+            <Form.Row>
+              <Col sm={8}>
+                <Form.Control
+                  size="md"
+                  name="item"
+                  placeholder="Enter todo..."
+                  value={item}
+                  onChange={handleChange}
+                />
+              </Col>
+              <Col style={{ display: "flex", justifyContent: "space-evenly" }}>
+                <Button type="submit" variant="primary">
+                  Add
+                </Button>
+                <Button variant="danger" onClick={clearItems}>
+                  Clear
+                </Button>
+              </Col>
+            </Form.Row>
+          </Form>
+        </Card>
+      </Container>
     </div>
   );
 }

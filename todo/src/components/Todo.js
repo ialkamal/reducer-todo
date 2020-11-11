@@ -6,26 +6,30 @@ function Todo(props) {
     <div
       style={{
         display: "flex",
-        justifyContent: "center",
+        flexFlow: "column wrap",
+        justifyContent: "flex-start",
         alignItems: "center",
+        margin: "10px 0 0 20px",
+        fontSize: "1.5rem",
       }}
     >
-      <pre
+      <div
         style={{
           textDecoration: props.todo.completed ? "line-through" : "none",
         }}
         onClick={() => props.completeItem(props.todo.id)}
       >
-        {JSON.stringify(props.todo, null, 2)}
-      </pre>
+        {props.todo.item}
+      </div>
       <pre
         style={{
           display: props.todo.completed ? "flex" : "none",
           justifyContent: "center",
-          color: "blue",
+          color: "gray",
+          fontSize: ".8rem",
         }}
       >
-        <div>completed </div>
+        <span>completed </span>
         <Moment fromNow>{props.todo.completed_date}</Moment>
       </pre>
     </div>
